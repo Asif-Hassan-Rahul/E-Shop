@@ -44,19 +44,30 @@
 						<a href="index.html"><i class="halflings-icon home"></i></a>
 						<a href="#"><i class="halflings-icon cog"></i></a>
 					</div>
+					<p class="alert-danger">
+					<?php
+					$message = Session::get('message');
+					if ($message) {
+						echo $message;
+						Session::put('message', null);
+					}
+
+					
+					 ?>
+					 </p>
 					<h2>Login to admin account</h2>
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="{{url('/admin-dashboard')}}" method="post">
 						<fieldset>
-							
+							{{ csrf_field() }}
 							<div class="input-prepend" title="Username">
 								<span class="add-on"><i class="halflings-icon user"></i></span>
-								<input class="input-large span10" name="Admin email" id="username" type="text" placeholder="type email address"/>
+								<input class="input-large span10" name="admin_email" id="username" type="text" placeholder="type email address"/>
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="halflings-icon lock"></i></span>
-								<input class="input-large span10" name="Admin password" id="password" type="password" placeholder="type password"/>
+								<input class="input-large span10" name="admin_password" id="password" type="password" placeholder="type password"/>
 							</div>
 
 
