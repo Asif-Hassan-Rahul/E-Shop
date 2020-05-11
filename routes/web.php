@@ -34,3 +34,10 @@ Route::post('/admin-dashboard','AdminController@dashboard');
 //category related routes
 Route::get('/add-category', 'CategoryController@index');
 Route::get('/all-category', 'CategoryController@all_category');
+Route::post('/save-category', 'CategoryController@save_category');
+Route::get('/unactive_category/{category_id}', 'CategoryController@unactive_category');			//deactivate
+Route::get('/active_category/{category_id}', 'CategoryController@active_category');				//activate
+Route::get('/edit_category/{category_id}', 'CategoryController@edit_category');					//edit
+Route::post('/update_category/{category_id}', 'CategoryController@update_category');				//update
+Route::get('/delete_category/{category_id}', 'CategoryController@delete_category');				//delete
+

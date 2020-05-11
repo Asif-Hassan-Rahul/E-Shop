@@ -54,7 +54,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>Metro</span></a>
+				<a class="brand" href="{{url('/dashboard')}}"><span>E-SHOP</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -443,6 +443,20 @@
 		<script src="{{asset('backend/js/retina.js')}}"></script>
 		<script src="{{asset('backend/js/custom.js')}}"></script>
 	<!-- end: JavaScript-->
+
+		<script type="text/javascript" src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.js')}}"></script>
+		<script>
+			$(document).on("click","#delete",function(e){
+				e.preventDefault();
+				var link = $(this).attr("href");
+				bootbox.confirm("Are you sure you want to delete?", function(confirmed){
+					if (confirmed) {
+						window.location.href = link;
+					};
+				});
+			});
+
+		</script>
 	
 </body>
 
