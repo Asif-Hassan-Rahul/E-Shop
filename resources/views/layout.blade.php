@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="" /></a>
+                        <a href="http://127.0.0.1:8000/"><img src="{{URL::to('frontend/images/home/logo.png')}}" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="shop.html">Products</a></li>
@@ -149,7 +149,7 @@
     ->get(); 
 
 ?>  
-<section id="slider"><!--slider-->
+{{-- <section id="slider"><!--slider-->
     <div class="container">
       <div class="row"> 
 
@@ -182,8 +182,61 @@
 
          </div>
      </div>
- </section>
+ </section> --}}
  <!-- end slide section -->
+
+<section id="slider"><!--slider-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#slider-carousel" data-slide-to="1"></li>
+                    <li data-target="#slider-carousel" data-slide-to="2"></li>
+                </ol>
+                
+                <div class="carousel-inner">
+                    <?php
+                        $all_published_slider = DB::table('tbl_slider')
+                                                ->where('publication_status',1)
+                                                ->get();
+                                            $i = 1;
+                                            foreach ($all_published_slider as $key ) {
+                                                if($i == 1){
+                                            
+                     ?>
+                    <div class="item active">
+                        <?php }else{ ?>
+                        <div class="item">
+                            <?php } ?>
+                        <div class="col-sm-4">
+                            <h1><span>E</span>-SHOP</h1>
+                            <h2>GET THIS ITEM RIGHT NOW</h2>
+                            <p>DONT MISS OUT!</p>
+                            <button type="button" class="btn btn-default get">Get it now</button>
+                        </div>
+                        <div class="col-sm-8">
+                            <img src="{{URL::to($key->slider_image)}}" class="girl img-responsive" alt="" />
+                            
+                        </div>
+                    </div>
+                    
+                    <?php $i++; } ?>
+                </div>
+                
+                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</section><!--/slider-->
 
 <section>
     <div class="container">
@@ -200,7 +253,7 @@
                         foreach ($all_published_category as $key) { ?>
                             <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">{{$key->category_name}}</a></h4>
+                                <h4 class="panel-title"><a href="{{URL::to('/product_by_category/'.$key->category_id)}}">{{$key->category_name}}</a></h4>
                             </div>
                         </div>
                         <?php
@@ -219,7 +272,7 @@
                                                     ->get();
 
                                 foreach ($all_published_manufacture as $key) { ?>
-                                <li><a href="#"> <span class="pull-right">(50)</span>{{$key->manufacture_name}}</a></li>
+                                <li><a href="{{URL::to('/product_by_manufacture/'.$key->manufacture_id)}}"> <span class="pull-right">(50)</span>{{$key->manufacture_name}}</a></li>
                              <?php
                                 }
                                 ?>   
@@ -246,7 +299,7 @@
                 <div class="features_items"><!--features_items-->
                     @yield('content')
                 
-            </div>
+                </div>
         </div>
     </div>
 </section>

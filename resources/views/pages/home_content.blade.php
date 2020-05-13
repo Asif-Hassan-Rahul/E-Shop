@@ -12,19 +12,19 @@
                     <p>{{$key->product_name}}</p>
                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
-                <div class="product-overlay">
+                <div class="product-overlay" {{-- style="background-color: white;" --}}>
                     <div class="overlay-content">
                         <img src="{{URL::to($key->product_image)}}" style="height: 200px; width: 200px" alt="" />
                         <h2>BDT {{$key->product_price}}</h2>
-                        <p>{{$key->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="{{ URL::to('/view_product/'.$key->product_id) }}"><p>{{$key->product_name}}</p></a>
+                        <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
                 </div>
         </div>
         <div class="choose">
             <ul class="nav nav-pills nav-justified">
-                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                <li><a href="#"><i class="fa fa-plus-square"></i>View Product</a></li>
+                <li><a href="#"><i class="fa fa-plus-square"></i>{{$key->manufacture_name}}</a></li>
+                <li><a href="{{ URL::to('/view_product/'.$key->product_id) }}"><i class="fa fa-plus-square"></i>View Product</a></li>
             </ul>
         </div>
     </div>
