@@ -88,8 +88,8 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="{{URL::to('/show_cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
@@ -117,8 +117,8 @@
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="shop.html">Products</a></li>
                                     <li><a href="product-details.html">Product Details</a></li> 
-                                    <li><a href="checkout.html">Checkout</a></li> 
-                                    <li><a href="cart.html">Cart</a></li> 
+                                    <li><a href="{{URL::to('/login-check')}}">Checkout</a></li> 
+                                    <li><a href="{{URL::to('/show_cart')}}">Cart</a></li> 
                                     <li><a href="login.html">Login</a></li> 
                                 </ul>
                             </li> 
@@ -185,58 +185,7 @@
  </section> --}}
  <!-- end slide section -->
 
-<section id="slider"><!--slider-->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#slider-carousel" data-slide-to="1"></li>
-                    <li data-target="#slider-carousel" data-slide-to="2"></li>
-                </ol>
-                
-                <div class="carousel-inner">
-                    <?php
-                        $all_published_slider = DB::table('tbl_slider')
-                                                ->where('publication_status',1)
-                                                ->get();
-                                            $i = 1;
-                                            foreach ($all_published_slider as $key ) {
-                                                if($i == 1){
-                                            
-                     ?>
-                    <div class="item active">
-                        <?php }else{ ?>
-                        <div class="item">
-                            <?php } ?>
-                        <div class="col-sm-4">
-                            <h1><span>E</span>-SHOP</h1>
-                            <h2>GET THIS ITEM RIGHT NOW</h2>
-                            <p>DONT MISS OUT!</p>
-                            <button type="button" class="btn btn-default get">Get it now</button>
-                        </div>
-                        <div class="col-sm-8">
-                            <img src="{{URL::to($key->slider_image)}}" class="girl img-responsive" alt="" />
-                            
-                        </div>
-                    </div>
-                    
-                    <?php $i++; } ?>
-                </div>
-                
-                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-            
-        </div>
-    </div>
-</div>
-</section><!--/slider-->
+@yield('slider');
 
 <section>
     <div class="container">

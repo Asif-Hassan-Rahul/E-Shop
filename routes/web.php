@@ -20,11 +20,22 @@ Route::get('/product_by_category/{category_id}','HomeController@show_product_by_
 Route::get('/product_by_manufacture/{manufacture_id}','HomeController@show_product_by_manufacture');
 Route::get('/view_product/{product_id}','HomeController@product_details_by_id');
 
+
+
+
+//cart routes are here...........................
 Route::post('/add-to-cart','CartController@add_to_cart');
+Route::get('/show_cart','CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}','CartController@delete_to_cart');
+Route::post('/update_cart','CartController@update_cart');
 
 
 
+//checkout routes are here..............
 
+Route::get('/login-check','CheckoutController@login_check');
+Route::post('/customer_registration','CheckoutController@customer_registration');
+Route::get('/checkout','CheckoutController@checkout');
 
 
 
