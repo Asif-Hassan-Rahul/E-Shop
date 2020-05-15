@@ -17,6 +17,7 @@ class CreateManufactureTable extends Migration
             $table->increments('manufacture_id');
             $table->string('manufacture_name');
             $table->string('manufacture_description');
+            $table->string('manufacture_logo');
             $table->integer('publication_status');
             $table->timestamps();
         });

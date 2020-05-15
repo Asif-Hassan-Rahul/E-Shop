@@ -7,9 +7,22 @@
 			<div class="row">
 				<div class="col-sm-3 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
-						<h2>Login to your account</h2>
-						<form action="" method="">
+						<p class="alert-danger">
+					<?php
+						$message = Session::get('message');
+						
+						if ($message) {
+						 	# code...
+						 	echo $message;
+						 	Session::put('message',null);
+						 } 
 							
+					 ?>
+				</p>
+
+						<h2>Login to your account</h2>
+						<form action="{{('/customer_login')}}" method="post">
+							{{ csrf_field() }}
 							<input type="email" required="" placeholder="Email" name="customer_email" />
 							<input type="password" required="" placeholder="Password" name="password" />
 							

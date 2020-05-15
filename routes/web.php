@@ -30,14 +30,19 @@ Route::get('/delete-to-cart/{rowId}','CartController@delete_to_cart');
 Route::post('/update_cart','CartController@update_cart');
 
 
+//customer login and logout
+Route::get('/customer_logout/{customer_id}','CheckoutController@customer_logout');
+Route::post('/customer_login','CheckoutController@customer_login');
+
 
 //checkout routes are here..............
 
 Route::get('/login-check','CheckoutController@login_check');
 Route::post('/customer_registration','CheckoutController@customer_registration');
 Route::get('/checkout','CheckoutController@checkout');
-
-
+Route::post('/save-shipping-details','CheckoutController@save_shipping_details');
+Route::get('/payment','CheckoutController@payment');
+Route::post('/order-place','CheckoutController@order_place');
 
 
 
@@ -69,6 +74,10 @@ Route::get('/delete_category/{category_id}', 'CategoryController@delete_category
 Route::get('/add-manufacture', 'ManufactureController@index');
 Route::post('/save-manufacture', 'ManufactureController@save_manufacture');
 Route::get('/all-manufacture', 'ManufactureController@all_manufacture');
+
+Route::get('/all_shops', 'ManufactureController@all_shops');
+
+
 Route::get('/delete_manufacture/{manufacture_id}', 'ManufactureController@delete_manufacture');	
 
 Route::get('/unactive_manufacture/{manufacture_id}', 'ManufactureController@unactive_manufacture');			//deactivate

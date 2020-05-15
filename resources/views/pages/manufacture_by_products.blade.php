@@ -4,23 +4,28 @@
 <h2 class="title text-center">Features Items</h2>
 <?php foreach ($product_by_manufacture as $key) { ?>
 <div class="col-sm-4">
+    
     <div class="product-image-wrapper">
+        
         <div class="single-products">
                 <div class="productinfo text-center">
                     <img src="{{URL::to($key->product_image)}}" style="height: 200px; width: 200px" alt="" />
                     <h2>BDT {{$key->product_price}}</h2>
                     <p>{{$key->product_name}}</p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
+                <a href="{{ URL::to('/view_product/'.$key->product_id) }}">
                 <div class="product-overlay">
                     <div class="overlay-content">
                         <img src="{{URL::to($key->product_image)}}" style="height: 200px; width: 200px" alt="" />
                         <h2>BDT {{$key->product_price}}</h2>
                         <p>{{$key->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart hover</a>
                     </div>
                 </div>
+                </a>
         </div>
+        
         <div class="choose">
             <ul class="nav nav-pills nav-justified">
                 <li><a href="#"><i class="fa fa-plus-square"></i>{{$key->manufacture_name}}</a></li>
@@ -28,9 +33,10 @@
             </ul>
         </div>
     </div>
+    
 </div>
 
-<?php } ?>?
+<?php } ?>
 
 
 </div><!--features_items-->

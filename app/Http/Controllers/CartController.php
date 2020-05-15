@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Cart;
+use Session;
 
 class CartController extends Controller
 {
@@ -55,4 +56,6 @@ class CartController extends Controller
 
 
     }
+
+    
 }

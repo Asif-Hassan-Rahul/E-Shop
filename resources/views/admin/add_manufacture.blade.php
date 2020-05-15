@@ -31,7 +31,7 @@
 					 ?>
 				</p>
 				<div class="box-content">
-					<form class="form-horizontal" action="{{ url('/save-manufacture') }}" method="POST">
+					<form class="form-horizontal" action="{{ url('/save-manufacture') }}" method="POST" enctype="multipart/form-data">
 						{{ csrf_field() }}
 					  <fieldset>
 				
@@ -49,6 +49,14 @@
 							<textarea class="form-control" name="manufacture_description" rows="3" required=""></textarea>
 						  </div>
 						</div>
+
+						<div class="control-group">
+						  <label class="control-label" for="fileInput">Manufacturer Logo</label>
+						  <div class="controls">
+							<input class="input-file uniform_on" id="fileInput" name="manufacture_logo" type="file">
+						  </div>
+						</div>
+
 						<div class="control-group hidden-phone">
 						  <label class="control-label" for="textarea2">Publication Status</label>
 						  <div class="controls">

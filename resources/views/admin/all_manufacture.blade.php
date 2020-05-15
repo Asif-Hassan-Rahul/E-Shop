@@ -31,6 +31,7 @@
 		  <thead>
 			  <tr>
 				  <th>Manufacture ID</th>
+				  <th>Manufacturer Logo</th>
 				  <th>Manufacture Name</th>
 				  <th>Manufacture Description</th>
 				  <th>Status</th>
@@ -42,6 +43,7 @@
 		<tbody>
 			<tr>
 				<td>{{ $key->manufacture_id }}</td>
+				<td><img src="{{ URL::to($key->manufacture_logo) }}" style="height: 80px; width: 80px;"></td>
 				<td class="center">{{ $key->manufacture_name }}</td>
 				<td class="center">{{ $key->manufacture_description }}</td>
 				<td class="center">

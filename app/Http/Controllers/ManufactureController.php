@@ -18,17 +18,53 @@ class ManufactureController extends Controller
 
     public function save_manufacture(Request $request)
     {
-    	$data = array();
+    	$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         function generate_string($input, $strength = 16) {
+            $input_length = strlen($input);
+            $random_string = '';
+            for($i = 0; $i < $strength; $i++) {
+            $random_character = $input[mt_rand(0, $input_length - 1)];
+            $random_string .= $random_character;
+            }
+ 
+            return $random_string;
+        }
+
+
+
+        $data = array();
     			$data['manufacture_id'] = $request->manufacture_id;
     			$data['manufacture_name'] = $request->manufacture_name;
     			$data['manufacture_description'] = $request->manufacture_description;
     			$data['publication_status'] = $request->publication_status;
 
     			
-    			DB::table('tbl_manufacture')->insert($data);
-    			Session::put('message','Manufacture added successfully.');
-    			return Redirect::to('/add-manufacture');
+    			
+                $image = $request->file('manufacture_logo');
+                if ($image) {
+                    $image_name      = generate_string($permitted_chars, 20);
+                    $ext             = strtolower($image->getClientOriginalExtension());
+                    $image_full_name = $image_name. '.' .$ext;
+                    $upload_path     = 'image/';
+                    $image_url       = $upload_path . $image_full_name;
+                    $success         = $image->move($upload_path, $image_full_name);
+                    if ($success) {
+                        $data['manufacture_logo'] = $image_url;
+
+                        DB::table('tbl_manufacture')->insert($data);
+            			Session::put('message','Manufacture added successfully.');
+            			return Redirect::to('/add-manufacture'); 
+                }
+
+                
+            }
+            $data['manufacture_logo'] = '';
+                DB::table('tbl_manufacture')->insert($data);
+                Session::put('message','Manufacture added without logo successfully.');
+                return Redirect::to('/add-manufacture'); 
+
     }
+
 
     public function all_manufacture()
     {
@@ -43,6 +79,21 @@ class ManufactureController extends Controller
     			
 
     	// return view('admin.all_category');
+    }
+
+    public function all_shops()
+    {
+        
+        $all_manufacture_info   = DB::table('tbl_manufacture')->get();
+        $manage_manufacture     = view('pages.all_shops')
+                ->with('all_manufacture_info',$all_manufacture_info);
+
+        return view('layout')
+                ->with('pages.all_shops',$manage_manufacture);
+
+                
+
+        // return view('admin.all_category');
     }
 
     public function delete_manufacture($manufacture_id)
