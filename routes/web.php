@@ -33,6 +33,7 @@ Route::post('/update_cart','CartController@update_cart');
 //customer login and logout
 Route::get('/customer_logout/{customer_id}','CheckoutController@customer_logout');
 Route::post('/customer_login','CheckoutController@customer_login');
+Route::get('/search_result','HomeController@search_result');
 
 
 //checkout routes are here..............
@@ -46,6 +47,10 @@ Route::post('/order-place','CheckoutController@order_place');
 
 
 
+//about and contact page.............
+
+Route::get('/about','HomeController@about');
+Route::get('/contact','HomeController@contact');
 
 
 
@@ -57,6 +62,21 @@ Route::get('/logout','SuperAdminController@logout');
 Route::get('/admin','AdminController@index');
 Route::get('/dashboard','SuperAdminController@index');
 Route::post('/admin-dashboard','AdminController@dashboard');
+
+Route::get('/manage-order','CheckoutController@manage_order');
+Route::get('/view-order/{order_id}','CheckoutController@view_order');
+Route::post('/update-total','CheckoutController@update_total');
+
+
+Route::get('/unactive_order/{order_id}', 'CheckoutController@unactive_order');			//deactivate
+Route::get('/active_order/{order_id}', 'CheckoutController@active_order');
+Route::get('/add-promo-code', 'AdminController@add_promo_code');
+Route::get('/show-promo-code', 'AdminController@show_promo_code');
+Route::post('/save-promo-code', 'AdminController@save_promo_code');
+Route::get('/delete-promo-code/{id}', 'AdminController@delete_promo_code');
+
+
+
 
 //category related routes
 Route::get('/add-category', 'CategoryController@index');

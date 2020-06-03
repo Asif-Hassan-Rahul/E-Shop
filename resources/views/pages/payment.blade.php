@@ -49,7 +49,7 @@
 								</form>
 							</div>
 							</td>
-							<td class="cart_total">
+							<td >
 								<p class="cart_total_price">{{$v_contents->total}}</p>
 							</td>
 							<td class="cart_delete">
@@ -58,8 +58,28 @@
 							</td>
 						</tr>
                        <?php }?>
-						
+						<tr>
+							<td><h2>Promo Code: </h2></td>
+							<form action="{{'/update-total'}}" method="post">
+								{{csrf_field()}}
+								<td><input type="text" name="promo_code"></td>
+								<td><input type="submit" name="Update" value="update"></td>
+								<?php Session::put('cart_total', Cart::total(2,'.','')); ?>
+							</form>
+							<td><h2>Total</h2></td>
+							<td class="cart_total_price" colspan="6" ><h2>{{ Cart::total() }} </h2></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><h2>Final Total: </h2></td>
+							<td class="cart_total_price" colspan="6"><h2><?php $final_total = Session::get('final_cart_total'); echo $final_total; ?></h2></td>
+						</tr>
 					</tbody>
+					<tfoot>
+
+					</tfoot>
 				</table>
 			</div>
 		</div>
@@ -67,8 +87,7 @@
 <section id="do_action">
 	<div class="container">
 		<div class="heading">
-			<h3>What would you like to do next?</h3>
-			<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+			
 		</div>
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">
@@ -87,15 +106,15 @@
 						<div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
 				            <label class="btn paymentMethod active">
 				            	<div class="method visa"></div>
-				                <input type="radio" name="payment_gateway" value="handcash" checked> 
+				                <input type="radio" name="payment_method" value="handcash" checked> 
 				            </label>
 				            <label class="btn paymentMethod">
 				            	<div class="method master-card"></div>
-				                <input type="radio" name="payment_gateway" value="paypal"> 
+				                <input type="radio" name="payment_method" value="debitcard"> 
 				            </label>
 				            <label class="btn paymentMethod">
 			            		<div class="method amex"></div>
-				                <input type="radio" name="payment_gateway" value="bkash">
+				                <input type="radio" name="payment_method" value="bkash">
 				            </label>
 				       		{{-- <label class="btn paymentMethod">
 			             		<div class="method vishwa"></div>

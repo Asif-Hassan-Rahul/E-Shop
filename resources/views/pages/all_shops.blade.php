@@ -4,7 +4,7 @@
 
 	 
 		<div class="container">
-		<div class="row" style="width: 800px">
+		<div class="row" style="width: 100%">
 		@foreach ($all_manufacture_info as $key )
 		<a href="{{URL::to('/product_by_manufacture/'.$key->manufacture_id)}}">
 		 <div class="col-sm-4">

@@ -30,10 +30,10 @@
 		<table class="table table-striped table-bordered bootstrap-datatable datatable">
 		  <thead>
 			  <tr>
-				  <th>Manufacture ID</th>
-				  <th>Manufacturer Logo</th>
-				  <th>Manufacture Name</th>
-				  <th>Manufacture Description</th>
+				  <th>Shop ID</th>
+				  <th>Shop Logo</th>
+				  <th>Shop Name</th>
+				  <th>Shop Description</th>
 				  <th>Status</th>
 				  <th>Actions</th>
 			  </tr>

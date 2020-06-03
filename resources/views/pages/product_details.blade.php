@@ -3,15 +3,15 @@
 
 
 
-<div class="col-sm-9 padding-right">
+<div class="col-sm-12 padding-right">
 <div class="product-details"><!--product-details-->
-	<div class="col-sm-5">
+	<div class="col-sm-3">
 		<div class="view-product">
 			<img src="{{URL::to($product_by_details->product_image)}}" alt="" />
 			<h3>ZOOM</h3>
 		</div>
 	</div>
-	<div class="col-sm-7">
+	<div class="col-sm-9">
 		<div class="product-information"><!--/product-information-->
 			<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 			<h2>{{$product_by_details->product_name}}</h2>

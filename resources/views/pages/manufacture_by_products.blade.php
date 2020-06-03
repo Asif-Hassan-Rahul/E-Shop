@@ -12,7 +12,7 @@
                     <img src="{{URL::to($key->product_image)}}" style="height: 200px; width: 200px" alt="" />
                     <h2>BDT {{$key->product_price}}</h2>
                     <p>{{$key->product_name}}</p>
-                    <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
                 </div>
                 <a href="{{ URL::to('/view_product/'.$key->product_id) }}">
                 <div class="product-overlay">
@@ -20,7 +20,7 @@
                         <img src="{{URL::to($key->product_image)}}" style="height: 200px; width: 200px" alt="" />
                         <h2>BDT {{$key->product_price}}</h2>
                         <p>{{$key->product_name}}</p>
-                        <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart hover</a>
+                        <a href="{{ URL::to('/view_product/'.$key->product_id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
                     </div>
                 </div>
                 </a>

@@ -76,6 +76,28 @@ class HomeController extends Controller
 
         return view('layout')
                 ->with('pages.product_details',$manage_product_by_details);
-}
+    }
+
+    public function about()
+    {
+        return view('pages.about_us');
+    }
+
+    public function contact()
+    {
+        return view('pages.contact_us');
+    }
+    public function search_result()
+    {
+        $search_query = $_GET['search'];
+        $search_query_result = DB::table('tbl_products')
+                                ->select('tbl_products.*')
+                                ->where('tbl_products.product_name',$search_query)
+                                ->get();
+        $manage_search_result = view('pages.search_result')
+                ->with('search_query_result',$search_query_result);
+        return view('layout')
+                ->with('pages.search_result',$manage_search_result);
+    }
 
 }

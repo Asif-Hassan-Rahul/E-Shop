@@ -72,12 +72,11 @@
 	<section id="do_action">
 		<div class="container">
 			<div class="heading">
-				<h3>What would you like to do next?</h3>
-				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+				
 			</div>
 			<div class="row">
-
-				<div class="col-sm-8">
+				
+				<div class="col-sm-12">
 					<div class="total_area">
 						<ul>
 							<li>Cart Sub Total <span>{{Cart::subtotal()}}</span></li>
@@ -85,18 +84,21 @@
 							<li>Shipping Cost <span>Free</span></li>
 							<li>Total <span>{{Cart::total()}}</span></li>
 						</ul>
-							<a class="btn btn-default update" href="">Update</a>
+							
 
 							<?php  
                             $customer_id = Session::get('customer_id');
+                            $shipping_id = Session::get('shipping_id');
                         		?>
-                        	<?php if($customer_id != NULL){ ?>
+                        	<?php if($customer_id != NULL && $shipping_id == NULL){ ?>
 							<a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Check Out</a>
 
 							<?php }
-                        	else{ ?>
-                        	<a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Check Out</a>
+                        	elseif($customer_id != NULL && $shipping_id != NULL){ ?>
+                        	<a class="btn btn-default check_out" href="{{URL::to('/payment')}}">Check Out</a>
 
+                        	<?php }else{ ?>
+                        	<a class="btn btn-default check_out" href="{{URL::to('/login-check')}}">Check Out</a>
                         	<?php } ?>
 
 
